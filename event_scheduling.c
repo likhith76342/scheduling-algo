@@ -19,6 +19,15 @@ int compare(const void *a, const void *b) {
     return e1->end - e2->end;
 }
 
+/* Display events */
+void displayEvents(Event events[], int n, const char *message) {
+    printf("%s\n", message);
+    for (int i = 0; i < n; i++) {
+        printf("Event %2d -> Start: %3d, End: %3d\n", i + 1, events[i].start, events[i].end);
+    }
+    printf("\n");
+}
+
 int main(){
 	
 }
