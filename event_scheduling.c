@@ -81,7 +81,7 @@ int main(){
 
     displayEvents(events, n, "Events after sorting by end time:");
 
-    int maxEvents = activitySelection(events, n);
+    int maxEvents = eventSelection(events, n);
 
     printf("Maximum number of non-overlapping events that can be scheduled: %d\n", maxEvents);
 
