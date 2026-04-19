@@ -8,7 +8,7 @@ typedef struct {
 	int end;
 }Event;
 
-/*Compare function (sorts using end time) */
+//Compare function (sorts using end time) 
 int compare(const void *a, const void *b) {
     Event *e1 = (Event *)a;
     Event *e2 = (Event *)b;
@@ -19,7 +19,7 @@ int compare(const void *a, const void *b) {
     return e1->end - e2->end;
 }
 
-/* Generate random events - just to show how the algorithm works in different inputs*/
+//Generate random events - just to show how the algorithm works in different inputs
 void generateRandomEvents(Event events[], int n, int maxStartTime, int maxDuration) {
     for (int i = 0; i < n; i++) {
         int start = rand() % maxStartTime;
@@ -31,7 +31,7 @@ void generateRandomEvents(Event events[], int n, int maxStartTime, int maxDurati
 }
 
 
-/* Display events */
+// Display events 
 void displayEvents(Event events[], int n, const char *message) {
     printf("%s\n", message);
     for (int i = 0; i < n; i++) {
@@ -40,7 +40,7 @@ void displayEvents(Event events[], int n, const char *message) {
     printf("\n");
 }
 
-/* Greedy activity selection */
+// Greedy activity selection
 int eventSelection(Event events[], int n) {
     int count = 0;
     int last_end = -1;
@@ -60,5 +60,31 @@ int eventSelection(Event events[], int n) {
 }
 
 int main(){
-	
+	int n;
+
+    printf("Enter number of events: ");
+    scanf("%d", &n);
+
+    Event *events = (Event *)malloc(n * sizeof(Event));
+    if (events == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    srand(time(NULL));
+
+    generateRandomEvents(events, n, 100, 20);
+
+    displayEvents(events, n, "Randomly generated events before sorting:");
+
+    qsort(events, n, sizeof(Event), compare);
+
+    displayEvents(events, n, "Events after sorting by end time:");
+
+    int maxEvents = activitySelection(events, n);
+
+    printf("Maximum number of non-overlapping events that can be scheduled: %d\n", maxEvents);
+
+    free(events);
+    return 0;
 }
