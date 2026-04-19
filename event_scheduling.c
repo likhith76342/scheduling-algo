@@ -28,6 +28,25 @@ void displayEvents(Event events[], int n, const char *message) {
     printf("\n");
 }
 
+/* Greedy activity selection */
+int eventSelection(Event events[], int n) {
+    int count = 0;
+    int last_end = -1;
+
+    printf("Selected non-overlapping events:\n");
+
+    for (int i = 0; i < n; i++) {
+        if (events[i].start >= last_end) {
+            printf("(%d, %d)\n", events[i].start, events[i].end);
+            last_end = events[i].end;
+            count++;
+        }
+    }
+
+    printf("\n");
+    return count;
+}
+
 int main(){
 	
 }
