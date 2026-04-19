@@ -19,6 +19,18 @@ int compare(const void *a, const void *b) {
     return e1->end - e2->end;
 }
 
+/* Generate random events - just to show how the algorithm works in different inputs*/
+void generateRandomEvents(Event events[], int n, int maxStartTime, int maxDuration) {
+    for (int i = 0; i < n; i++) {
+        int start = rand() % maxStartTime;
+        int duration = (rand() % maxDuration) + 1;
+
+        events[i].start = start;
+        events[i].end = start + duration;
+    }
+}
+
+
 /* Display events */
 void displayEvents(Event events[], int n, const char *message) {
     printf("%s\n", message);
