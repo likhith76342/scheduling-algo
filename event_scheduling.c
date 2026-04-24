@@ -123,36 +123,3 @@ int main() {
     free(events);
     return 0;
 }
-
-int main() {
-    int n;
-
-    printf("Enter number of events: ");
-    scanf("%d", &n);
-
-    if (n <= 0) {
-        printf("Invalid number of events.\n");
-        return 1;
-    }
-
-    Event *events = (Event *)malloc(n * sizeof(Event));
-    if (events == NULL) {
-        printf("Memory allocation failed.\n");
-        return 1;
-    }
-
-    inputEvents(events, n);
-
-    displayEvents(events, n, "Events before sorting:");
-
-    qsort(events, n, sizeof(Event), compare);
-
-    displayEvents(events, n, "Events after sorting by end time:");
-
-    int maxEvents = eventSelection(events, n);
-
-    printf("Maximum number of non-overlapping events that can be scheduled: %d\n", maxEvents);
-
-    free(events);
-    return 0;
-}
