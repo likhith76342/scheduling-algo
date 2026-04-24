@@ -56,12 +56,14 @@ void inputEvents(Event events[], int n) {
     }
 }
 
-
-// Display events 
 void displayEvents(Event events[], int n, const char *message) {
-    printf("%s\n", message);
+    printf("\n%s\n", message);
     for (int i = 0; i < n; i++) {
-        printf("Event %2d -> Start: %3d, End: %3d\n", i + 1, events[i].start, events[i].end);
+        printf("Event %2d -> Start: ", i + 1);
+        printTime(events[i].start);
+        printf(", End: ");
+        printTime(events[i].end);
+        printf("\n");
     }
     printf("\n");
 }
