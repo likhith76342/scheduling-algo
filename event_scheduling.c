@@ -30,6 +30,31 @@ void printTime(int totalMinutes) {
     printf("%02d:%02d", hour, minute);
 }
 
+void inputEvents(Event events[], int n) {
+    int sh, sm, eh, em;
+
+    for (int i = 0; i < n; i++) {
+        printf("Enter event %d start time (HH:MM): ", i + 1);
+        scanf("%d:%d", &sh, &sm);
+
+        printf("Enter event %d end time (HH:MM): ", i + 1);
+        scanf("%d:%d", &eh, &em);
+
+        if (sh < 0 || sh > 23 || sm < 0 || sm > 59 ||
+            eh < 0 || eh > 23 || em < 0 || em > 59) {
+            printf("Invalid time entered.\n");
+            exit(1);
+        }
+
+        events[i].start = toMinutes(sh, sm);
+        events[i].end = toMinutes(eh, em);
+
+        if (events[i].end < events[i].start) {
+            printf("End time must be greater than or equal to start time.\n");
+            exit(1);
+        }
+    }
+}
 
 
 // Display events 
