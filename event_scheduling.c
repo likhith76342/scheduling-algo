@@ -24,16 +24,12 @@ int toMinutes(int hour, int minute) {
     return hour * 60 + minute;
 }
 
-//Generate random events - just to show how the algorithm works in different inputs
-void generateRandomEvents(Event events[], int n, int maxStartTime, int maxDuration) {
-    for (int i = 0; i < n; i++) {
-        int start = rand() % maxStartTime;
-        int duration = (rand() % maxDuration) + 1;
-
-        events[i].start = start;
-        events[i].end = start + duration;
-    }
+void printTime(int totalMinutes) {
+    int hour = totalMinutes / 60;
+    int minute = totalMinutes % 60;
+    printf("%02d:%02d", hour, minute);
 }
+
 
 
 // Display events 
