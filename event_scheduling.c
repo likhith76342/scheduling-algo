@@ -19,6 +19,11 @@ int compare(const void *a, const void *b) {
     return e1->end - e2->end;
 }
 
+
+int toMinutes(int hour, int minute) {
+    return hour * 60 + minute;
+}
+
 //Generate random events - just to show how the algorithm works in different inputs
 void generateRandomEvents(Event events[], int n, int maxStartTime, int maxDuration) {
     for (int i = 0; i < n; i++) {
